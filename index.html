@@ -10,24 +10,35 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
+    <nav class="sidebar-nav">
+        <div class="brand">Duy Anh Le</div>
+        <div class="nav-links">
+            <a href="#top">Home</a>
+            <a href="#about">About</a>
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <a class="pill" href="mailto:duyanhle9c1@gmail.com">Say hello</a>
+    </nav>
     <div class="page-shell">
+        <!-- Profile Image -->
+        <div class="profile-image">
+            <img src="toan 1-433.jpg" alt="Duy Anh Le">
+        </div>
+        
+        <!-- Floating Avatar - appears on scroll -->
+        <div class="floating-avatar" id="floating-avatar">
+            <img src="toan 1-433.jpg" alt="Duy Anh Le">
+        </div>
+        
         <header class="hero" id="top">
-            <nav class="nav">
-                <div class="brand">Duy Anh Le</div>
-                <div class="nav-links">
-                    <a href="#about">About</a>
-                    <a href="#work">Work</a>
-                    <a href="#skills">Skills</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <a class="pill" href="mailto:anhle@example.com">Say hello</a>
-            </nav>
 
             <div class="hero-grid">
                 <div class="hero-text">
                     <p class="eyebrow">AI Engineer</p>
                     <h1></h1>
-                    <p class="lede">I build fast, accessible interfaces and the systems behind them. Currently exploring AI-assisted products and data-rich dashboards.</p>
+                    <p class="lede">Strong background in AI, Machine Learning & Deep Learning. Experienced with RAG systems, Knowledge Graphs, and LLMs. Currently studying Information & Technology at PTIT.</p>
                     
                     <div class="personal-info-compact">
                         <div class="info-item">
@@ -39,23 +50,19 @@
                             <a href="mailto:duyanhle9c1@gmail.com">duyanhle9c1@gmail.com</a>
                         </div>
                          <div class="info-item">
-                            <span class="label">Phone</span>
-                            <a href="tel:0987517643">098 751 7643</a>
+                            <span class="label">Location</span>
+                            <span>Ha Noi, Viet Nam</span>
                         </div>
                     </div>
 
                     <div class="actions">
                         <a class="pill primary" href="#work">View projects</a>
-                        <a class="pill ghost" href="#contact">Download CV</a>
+                        <a class="pill ghost" href="CV:DuyAnh.pdf" download>Download CV</a>
                     </div>
                 </div>
                 <div class="hero-card">
                     <!-- Placeholder for small profile picture if needed -->
                 </div>
-            </div>
-            
-            <div class="hero-banner-image">
-                <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=2070&auto=format&fit=crop" alt="Workspace Banner">
             </div>
         </header>
 
@@ -63,68 +70,65 @@
             <section id="about" class="section">
                 <div class="section-header">
                     <p class="eyebrow">About</p>
-                    <h2>Engineer with a bias for execution.</h2>
-                    <p class="lede">I enjoy pairing thoughtful design with clean implementation. From wireframe to deploy, I care about performance budgets, accessibility, and DX.</p>
+                    <h2>AI Engineer with a passion for learning.</h2>
+                    <p class="lede">With a strong learning spirit and proactive mindset, I look forward to contributing effectively and continuously enhancing my skills in the field of AI.</p>
                 </div>
                 <div class="about-grid">
                     <div class="card">
                         <h3>What I do</h3>
-                        <p>Front-end architecture, design systems, API integration, and light backend for feature delivery.</p>
+                        <p>Research on Knowledge Graphs, RAG systems, Machine Translation, and LLM fine-tuning with LoRA.</p>
                     </div>
                     <div class="card">
-                        <h3>How I work</h3>
-                        <p>Start lean, ship often, measure, and iterate. I favor automated testing, CI, and observability to keep quality high.</p>
+                        <h3>Education</h3>
+                        <p>Engineer of Information and Technology at PTIT (2023-2028). CPA: 3.3/4.0. IELTS 7.0.</p>
                     </div>
                     <div class="card">
-                        <h3>Recent focus</h3>
-                        <p>Interactive dashboards, AI-assisted UX, and content-heavy sites that still load instantly.</p>
+                        <h3>Certifications</h3>
+                        <p>Fundamental of Deep Learning - Nvidia. Experience with LLMs and Google AI Studio.</p>
                     </div>
                 </div>
             </section>
 
             <section id="work" class="section">
                 <div class="section-header">
-                    <p class="eyebrow">Selected Work</p>
-                    <h2>Projects that ship value.</h2>
-                    <p class="lede">A mix of client work, personal builds, and experiments. Each shipped with measurable outcomes.</p>
+                    <p class="eyebrow">Experience & Projects</p>
+                    <h2>Research and Development.</h2>
+                    <p class="lede">Research projects at PTIT labs and personal AI projects with measurable results.</p>
                 </div>
                 <div class="work-grid">
                     <article class="work-card">
                         <div class="work-meta">
-                            <span class="tag">Dashboard</span>
-                            <span class="tag ghost">React • Node</span>
+                            <span class="tag">RAG System</span>
+                            <span class="tag ghost">LLM • LoRA</span>
                         </div>
-                        <h3>Insight Pulse</h3>
-                        <p>Real-time analytics dashboard with custom charting and role-based access. Cut reporting time by 60%.</p>
+                        <h3>GraphRAG</h3>
+                        <p>Building a RAG system based on Knowledge Graph for entity reasoning. Applied LoRA fine-tuning. Achieved 80% Semantic Similarity and 50% RougeL score.</p>
                         <div class="work-actions">
-                            <a href="#" class="pill ghost">Live demo</a>
-                            <a href="#" class="pill">Case study</a>
+                            <a href="https://github.com/duyanhle17" class="pill ghost" target="_blank">View on Github</a>
                         </div>
                     </article>
 
                     <article class="work-card">
                         <div class="work-meta">
-                            <span class="tag">AI Assistant</span>
-                            <span class="tag ghost">Next.js • OpenAI</span>
+                            <span class="tag">Research Lab</span>
+                            <span class="tag ghost">PTIT AI Lab Naver</span>
                         </div>
-                        <h3>Flowwriter</h3>
-                        <p>AI-assisted editor that suggests tone, structure, and citations. Improved content team throughput by 35%.</p>
+                        <h3>Knowledge Graph Research</h3>
+                        <p>Participated in research on improving Knowledge Graph model with Dr. Tran Tien Cong. Worked with modern AI tools and frameworks.</p>
                         <div class="work-actions">
-                            <a href="#" class="pill ghost">Live demo</a>
-                            <a href="#" class="pill">Case study</a>
+                            <a href="#" class="pill">2025 - Present</a>
                         </div>
                     </article>
 
                     <article class="work-card">
                         <div class="work-meta">
-                            <span class="tag">E-commerce</span>
-                            <span class="tag ghost">Svelte • Go</span>
+                            <span class="tag">NLP</span>
+                            <span class="tag ghost">PTIT AVIS Lab</span>
                         </div>
-                        <h3>Northbound</h3>
-                        <p>High-performance storefront with offline-ready PWA. Increased conversion by 18% on mobile.</p>
+                        <h3>Machine Translation</h3>
+                        <p>Creating translation model for minority languages with low resources. Fine-tuned mBART 50 from META on Flores datasets.</p>
                         <div class="work-actions">
-                            <a href="#" class="pill ghost">Live demo</a>
-                            <a href="#" class="pill">Case study</a>
+                            <a href="#" class="pill">2025 - Present</a>
                         </div>
                     </article>
                 </div>
@@ -133,22 +137,41 @@
             <section id="skills" class="section">
                 <div class="section-header">
                     <p class="eyebrow">Skills</p>
-                    <h2>Tools I reach for.</h2>
-                    <p class="lede">Modern front-end stacks, API-first backends, and a sprinkle of data tooling.</p>
+                    <h2>Tools & Technologies.</h2>
+                    <p class="lede">AI/ML frameworks, programming languages, and development tools.</p>
                 </div>
-                <div class="skills-grid">
-                    <div class="chip">TypeScript</div>
-                    <div class="chip">React / Next.js</div>
-                    <div class="chip">Svelte</div>
-                    <div class="chip">Node.js</div>
-                    <div class="chip">Python</div>
-                    <div class="chip">REST / GraphQL</div>
-                    <div class="chip">PostgreSQL</div>
-                    <div class="chip">Tailwind / CSS</div>
-                    <div class="chip">Figma</div>
-                    <div class="chip">CI/CD</div>
-                    <div class="chip">Testing Library</div>
-                    <div class="chip">A11y</div>
+                
+                <div class="skills-category">
+                    <h3 class="category-title">Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="chip">Python</div>
+                        <div class="chip">C/C++</div>
+                        <div class="chip">Java</div>
+                        <div class="chip">SQL</div>
+                        <div class="chip">HTML/CSS/JS</div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">AI & Machine Learning</h3>
+                    <div class="skills-grid">
+                        <div class="chip">LLMs</div>
+                        <div class="chip">RAG Systems</div>
+                        <div class="chip">Knowledge Graph</div>
+                        <div class="chip">LoRA Fine-tuning</div>
+                        <div class="chip">Deep Learning</div>
+                        <div class="chip">Machine Learning</div>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3 class="category-title">Tools & Platforms</h3>
+                    <div class="skills-grid">
+                        <div class="chip">Google AI Studio</div>
+                        <div class="chip">Github</div>
+                        <div class="chip">Ubuntu</div>
+                        <div class="chip">VS Code</div>
+                    </div>
                 </div>
             </section>
 
@@ -181,5 +204,21 @@
             <a class="pill ghost" href="#top">Back to top</a>
         </footer>
     </div>
+
+    <script>
+        // Floating avatar on scroll
+        const profileImage = document.querySelector('.profile-image');
+        const floatingAvatar = document.getElementById('floating-avatar');
+        
+        window.addEventListener('scroll', () => {
+            const imageBottom = profileImage.offsetTop + profileImage.offsetHeight;
+            
+            if (window.scrollY > imageBottom - 100) {
+                floatingAvatar.classList.add('visible');
+            } else {
+                floatingAvatar.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>

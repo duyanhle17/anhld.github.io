@@ -1,226 +1,577 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Duy Anh Le | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
+    <title>Quản Lý Thông Tin Sinh Viên</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .form-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .form-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .table-section {
+            margin-top: 30px;
+        }
+
+        .table-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .btn-edit, .btn-delete {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-edit {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-edit:hover {
+            background: #218838;
+        }
+
+        .btn-delete {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c82333;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #6c757d;
+        }
+
+        .empty-state i {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 2em;
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav class="sidebar-nav">
-        <div class="brand">Duy Anh Le</div>
-        <div class="nav-links">
-            <a href="#top">Home</a>
-            <a href="#about">About</a>
-            <a href="#work">Work</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+    <div class="container">
+        <div class="header">
+            <h1>📚 HỆ THỐNG QUẢN LÝ SINH VIÊN</h1>
+            <p>Nhập và quản lý thông tin sinh viên một cách dễ dàng</p>
         </div>
-        <a class="pill" href="mailto:duyanhle9c1@gmail.com">Say hello</a>
-    </nav>
-    <div class="page-shell">
-        <!-- Profile Image -->
-        <div class="profile-image">
-            <img src="toan 1-433.jpg" alt="Duy Anh Le">
-        </div>
-        
-        <!-- Floating Avatar - appears on scroll -->
-        <div class="floating-avatar" id="floating-avatar">
-            <img src="toan 1-433.jpg" alt="Duy Anh Le">
-        </div>
-        
-        <header class="hero" id="top">
 
-            <div class="hero-grid">
-                <div class="hero-text">
-                    <p class="eyebrow">AI Engineer</p>
-                    <h1></h1>
-                    <p class="lede">Strong background in AI, Machine Learning & Deep Learning. Experienced with RAG systems, Knowledge Graphs, and LLMs. Currently studying Information & Technology at PTIT.</p>
-                    
-                    <div class="personal-info-compact">
-                        <div class="info-item">
-                            <span class="label">Github</span>
-                            <a href="https://github.com/duyanhle17" target="_blank">github.com/duyanhle17</a>
-                        </div>
-                        <div class="info-item">
-                            <span class="label">Email</span>
-                            <a href="mailto:duyanhle9c1@gmail.com">duyanhle9c1@gmail.com</a>
-                        </div>
-                         <div class="info-item">
-                            <span class="label">Location</span>
-                            <span>Ha Noi, Viet Nam</span>
-                        </div>
-                    </div>
-
-                    <div class="actions">
-                        <a class="pill primary" href="#work">View projects</a>
-                        <a class="pill ghost" href="CV_DuyAnh.pdf" download>Download CV</a>
-                    </div>
+        <div class="content">
+            <div class="stats">
+                <div class="stat-card">
+                    <h3 id="totalStudents">0</h3>
+                    <p>Tổng số sinh viên</p>
                 </div>
-                <div class="hero-card">
-                    <!-- Placeholder for small profile picture if needed -->
+                <div class="stat-card">
+                    <h3 id="avgGPA">0.00</h3>
+                    <p>GPA trung bình</p>
                 </div>
             </div>
-        </header>
 
-        <main>
-            <section id="about" class="section">
-                <div class="section-header">
-                    <p class="eyebrow">About</p>
-                    <h2>AI Engineer with a passion for learning.</h2>
-                    <p class="lede">With a strong learning spirit and proactive mindset, I look forward to contributing effectively and continuously enhancing my skills in the field of AI.</p>
-                </div>
-                <div class="about-grid">
-                    <div class="card">
-                        <h3>What I do</h3>
-                        <p>Research on Knowledge Graphs, RAG systems, Machine Translation, and LLM fine-tuning with LoRA.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Education</h3>
-                        <p>Engineer of Information and Technology at PTIT (2023-2028). </p>
-                        <p>3.3/4.0 </p>
-                        <p>IELTS 7.0</p>
-                    </div>
-                    <div class="card">
-                        <h3>Certifications</h3>
-                        <p>Fundamental of Deep Learning - Nvidia. Experience with LLMs and Google AI Studio.</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="work" class="section">
-                <div class="section-header">
-                    <p class="eyebrow">Experience & Projects</p>
-                    <h2>Research and Development.</h2>
-                    <p class="lede">Research projects at PTIT labs and personal AI projects with measurable results.</p>
-                </div>
-                <div class="work-grid">
-                    <article class="work-card">
-                        <div class="work-meta">
-                            <span class="tag">RAG System</span>
-                            <span class="tag ghost">LLM • LoRA</span>
+            <div class="form-section">
+                <h2 id="formTitle">➕ Thêm Sinh Viên Mới</h2>
+                <form id="studentForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="studentId">Mã Sinh Viên *</label>
+                            <input type="text" id="studentId" required placeholder="VD: SV001">
                         </div>
-                        <h3>GraphRAG</h3>
-                        <p>Building a RAG system based on Knowledge Graph for entity reasoning. Applied LoRA fine-tuning. Achieved 80% Semantic Similarity and 50% RougeL score.</p>
-                        <div class="work-actions">
-                            <a href="https://github.com/duyanhle17" class="pill ghost" target="_blank">View on Github</a>
+                        <div class="form-group">
+                            <label for="fullName">Họ và Tên *</label>
+                            <input type="text" id="fullName" required placeholder="VD: Nguyễn Văn A">
                         </div>
-                    </article>
-
-                    <article class="work-card">
-                        <div class="work-meta">
-                            <span class="tag">Research Lab</span>
-                            <span class="tag ghost">PTIT AI Lab Naver</span>
-                        </div>
-                        <h3>Knowledge Graph Research</h3>
-                        <p>Participated in research on improving Knowledge Graph model with Dr. Tran Tien Cong. Worked with modern AI tools and frameworks.</p>
-                        <div class="work-actions">
-                            <a href="#" class="pill">2025 - Present</a>
-                        </div>
-                    </article>
-
-                    <article class="work-card">
-                        <div class="work-meta">
-                            <span class="tag">NLP</span>
-                            <span class="tag ghost">PTIT AVIS Lab</span>
-                        </div>
-                        <h3>Machine Translation</h3>
-                        <p>Creating translation model for minority languages with low resources. Fine-tuned mBART 50 from META on Flores datasets.</p>
-                        <div class="work-actions">
-                            <a href="#" class="pill">2025 - Present</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <section id="skills" class="section">
-                <div class="section-header">
-                    <p class="eyebrow">Skills</p>
-                    <h2>Tools & Technologies.</h2>
-                    <p class="lede">AI/ML frameworks, programming languages, and development tools.</p>
-                </div>
-                
-                <div class="skills-category">
-                    <h3 class="category-title">Programming Languages</h3>
-                    <div class="skills-grid">
-                        <div class="chip">Python</div>
-                        <div class="chip">C/C++</div>
-                        <div class="chip">Java</div>
-                        <div class="chip">SQL</div>
-                        <div class="chip">HTML/CSS/JS</div>
                     </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3 class="category-title">AI & Machine Learning</h3>
-                    <div class="skills-grid">
-                        <div class="chip">LLMs</div>
-                        <div class="chip">RAG Systems</div>
-                        <div class="chip">Knowledge Graph</div>
-                        <div class="chip">LoRA Fine-tuning</div>
-                        <div class="chip">Deep Learning</div>
-                        <div class="chip">Machine Learning</div>
-                    </div>
-                </div>
-
-                <div class="skills-category">
-                    <h3 class="category-title">Tools & Platforms</h3>
-                    <div class="skills-grid">
-                        <div class="chip">Google AI Studio</div>
-                        <div class="chip">Github</div>
-                        <div class="chip">Ubuntu</div>
-                        <div class="chip">VS Code</div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section" id="contact">
-                <div class="section-header">
-                    <p class="eyebrow">Contact</p>
-                    <h2>Let us build something.</h2>
-                    <p class="lede">I am open to freelance, full-time roles, and collaborations.</p>
-                </div>
-                <!-- Updated Contact Info Area -->
-                <div class="contact-card">
-                    <div>
-                        <h3>Phone</h3>
-                        <a href="tel:0987517643">098 751 7643</a>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">Ngày Sinh *</label>
+                            <input type="date" id="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="className">Lớp Học *</label>
+                            <input type="text" id="className" required placeholder="VD: CNTT-K15">
+                        </div>
+                        <div class="form-group">
+                            <label for="gpa">Điểm GPA *</label>
+                            <input type="number" id="gpa" step="0.01" min="0" max="4" required placeholder="VD: 3.50">
+                        </div>
                     </div>
                     <div>
-                        <h3>Email</h3>
-                        <a href="mailto:duyanhle9c1@gmail.com">duyanhle9c1@gmail.com</a>
+                        <button type="submit" class="btn btn-primary" id="submitBtn">Thêm Sinh Viên</button>
+                        <button type="button" class="btn btn-secondary" id="cancelBtn" style="display:none;">Hủy</button>
                     </div>
-                    <div>
-                        <h3>Github</h3>
-                        <a href="https://github.com/duyanhle17" target="_blank" rel="noopener">github.com/duyanhle17</a>
-                    </div>
-                </div>
-            </section>
-        </main>
+                </form>
+            </div>
 
-        <footer class="footer">
-            <span>Built with care. © 2026 Duy Anh Le.</span>
-            <a class="pill ghost" href="#top">Back to top</a>
-        </footer>
+            <div class="table-section">
+                <h2>📋 Danh Sách Sinh Viên</h2>
+                <div id="tableContainer"></div>
+            </div>
+        </div>
     </div>
 
     <script>
-        // Floating avatar on scroll
-        const profileImage = document.querySelector('.profile-image');
-        const floatingAvatar = document.getElementById('floating-avatar');
-        
-        window.addEventListener('scroll', () => {
-            const imageBottom = profileImage.offsetTop + profileImage.offsetHeight;
-            
-            if (window.scrollY > imageBottom - 100) {
-                floatingAvatar.classList.add('visible');
-            } else {
-                floatingAvatar.classList.remove('visible');
+        // Lớp Student để quản lý thông tin sinh viên
+        class Student {
+            constructor(studentId, fullName, birthDate, className, gpa) {
+                this.studentId = studentId;
+                this.fullName = fullName;
+                this.birthDate = birthDate;
+                this.className = className;
+                this.gpa = parseFloat(gpa);
             }
+
+            // Phương thức cập nhật thông tin
+            updateInfo(fullName, birthDate, className, gpa) {
+                this.fullName = fullName;
+                this.birthDate = birthDate;
+                this.className = className;
+                this.gpa = parseFloat(gpa);
+            }
+
+            // Phương thức lấy tuổi
+            getAge() {
+                const today = new Date();
+                const birth = new Date(this.birthDate);
+                let age = today.getFullYear() - birth.getFullYear();
+                const monthDiff = today.getMonth() - birth.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+
+            // Phương thức format ngày sinh
+            getFormattedBirthDate() {
+                const date = new Date(this.birthDate);
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}/${month}/${year}`;
+            }
+
+            // Phương thức xếp loại học lực
+            getAcademicRank() {
+                if (this.gpa >= 3.6) return 'Xuất sắc';
+                if (this.gpa >= 3.2) return 'Giỏi';
+                if (this.gpa >= 2.5) return 'Khá';
+                if (this.gpa >= 2.0) return 'Trung bình';
+                return 'Yếu';
+            }
+        }
+
+        // Quản lý danh sách sinh viên
+        class StudentManager {
+            constructor() {
+                this.students = this.loadFromLocalStorage();
+                this.editingIndex = -1;
+            }
+
+            // Thêm sinh viên mới
+            addStudent(student) {
+                this.students.push(student);
+                this.saveToLocalStorage();
+            }
+
+            // Cập nhật sinh viên
+            updateStudent(index, student) {
+                this.students[index] = student;
+                this.saveToLocalStorage();
+            }
+
+            // Xóa sinh viên
+            deleteStudent(index) {
+                this.students.splice(index, 1);
+                this.saveToLocalStorage();
+            }
+
+            // Kiểm tra mã sinh viên đã tồn tại
+            isStudentIdExists(studentId, excludeIndex = -1) {
+                return this.students.some((student, index) => 
+                    student.studentId === studentId && index !== excludeIndex
+                );
+            }
+
+            // Lấy sinh viên theo index
+            getStudent(index) {
+                return this.students[index];
+            }
+
+            // Tính GPA trung bình
+            getAverageGPA() {
+                if (this.students.length === 0) return 0;
+                const sum = this.students.reduce((acc, student) => acc + student.gpa, 0);
+                return (sum / this.students.length).toFixed(2);
+            }
+
+            // Lưu vào localStorage
+            saveToLocalStorage() {
+                localStorage.setItem('students', JSON.stringify(this.students));
+            }
+
+            // Tải từ localStorage
+            loadFromLocalStorage() {
+                const data = localStorage.getItem('students');
+                if (data) {
+                    const parsedData = JSON.parse(data);
+                    return parsedData.map(s => new Student(
+                        s.studentId,
+                        s.fullName,
+                        s.birthDate,
+                        s.className,
+                        s.gpa
+                    ));
+                }
+                return [];
+            }
+        }
+
+        // Khởi tạo
+        const manager = new StudentManager();
+
+        // Lấy các elements
+        const form = document.getElementById('studentForm');
+        const formTitle = document.getElementById('formTitle');
+        const submitBtn = document.getElementById('submitBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const tableContainer = document.getElementById('tableContainer');
+        const totalStudentsEl = document.getElementById('totalStudents');
+        const avgGPAEl = document.getElementById('avgGPA');
+
+        // Render bảng
+        function renderTable() {
+            if (manager.students.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="empty-state">
+                        <div style="font-size: 3em; margin-bottom: 15px;">📭</div>
+                        <h3>Chưa có sinh viên nào</h3>
+                        <p>Hãy thêm sinh viên mới bằng form bên trên</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let tableHTML = `
+                <table>
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Mã SV</th>
+                            <th>Họ và Tên</th>
+                            <th>Ngày Sinh</th>
+                            <th>Lớp</th>
+                            <th>GPA</th>
+                            <th>Xếp Loại</th>
+                            <th>Thao Tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            manager.students.forEach((student, index) => {
+                tableHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td><strong>${student.studentId}</strong></td>
+                        <td>${student.fullName}</td>
+                        <td>${student.getFormattedBirthDate()}</td>
+                        <td>${student.className}</td>
+                        <td><strong>${student.gpa.toFixed(2)}</strong></td>
+                        <td>${student.getAcademicRank()}</td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn-edit" onclick="editStudent(${index})">✏️ Sửa</button>
+                                <button class="btn-delete" onclick="deleteStudent(${index})">🗑️ Xóa</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            tableHTML += `
+                    </tbody>
+                </table>
+            `;
+
+            tableContainer.innerHTML = tableHTML;
+        }
+
+        // Cập nhật thống kê
+        function updateStats() {
+            totalStudentsEl.textContent = manager.students.length;
+            avgGPAEl.textContent = manager.getAverageGPA();
+        }
+
+        // Xử lý submit form
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const studentId = document.getElementById('studentId').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const birthDate = document.getElementById('birthDate').value;
+            const className = document.getElementById('className').value.trim();
+            const gpa = document.getElementById('gpa').value;
+
+            // Kiểm tra mã sinh viên trùng
+            if (manager.isStudentIdExists(studentId, manager.editingIndex)) {
+                alert('Mã sinh viên đã tồn tại! Vui lòng nhập mã khác.');
+                return;
+            }
+
+            const student = new Student(studentId, fullName, birthDate, className, gpa);
+
+            if (manager.editingIndex >= 0) {
+                // Cập nhật
+                manager.updateStudent(manager.editingIndex, student);
+                manager.editingIndex = -1;
+                formTitle.textContent = '➕ Thêm Sinh Viên Mới';
+                submitBtn.textContent = 'Thêm Sinh Viên';
+                cancelBtn.style.display = 'none';
+                document.getElementById('studentId').disabled = false;
+            } else {
+                // Thêm mới
+                manager.addStudent(student);
+            }
+
+            form.reset();
+            renderTable();
+            updateStats();
         });
+
+        // Sửa sinh viên
+        function editStudent(index) {
+            const student = manager.getStudent(index);
+            
+            document.getElementById('studentId').value = student.studentId;
+            document.getElementById('fullName').value = student.fullName;
+            document.getElementById('birthDate').value = student.birthDate;
+            document.getElementById('className').value = student.className;
+            document.getElementById('gpa').value = student.gpa;
+
+            manager.editingIndex = index;
+            formTitle.textContent = '✏️ Cập Nhật Thông Tin Sinh Viên';
+            submitBtn.textContent = 'Cập Nhật';
+            cancelBtn.style.display = 'inline-block';
+            document.getElementById('studentId').disabled = true;
+
+            // Scroll to form
+            document.querySelector('.form-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Xóa sinh viên
+        function deleteStudent(index) {
+            const student = manager.getStudent(index);
+            if (confirm(`Bạn có chắc chắn muốn xóa sinh viên ${student.fullName} (${student.studentId})?`)) {
+                manager.deleteStudent(index);
+                renderTable();
+                updateStats();
+            }
+        }
+
+        // Hủy chỉnh sửa
+        cancelBtn.addEventListener('click', function() {
+            form.reset();
+            manager.editingIndex = -1;
+            formTitle.textContent = '➕ Thêm Sinh Viên Mới';
+            submitBtn.textContent = 'Thêm Sinh Viên';
+            cancelBtn.style.display = 'none';
+            document.getElementById('studentId').disabled = false;
+        });
+
+        // Khởi tạo trang
+        renderTable();
+        updateStats();
     </script>
 </body>
 </html>
